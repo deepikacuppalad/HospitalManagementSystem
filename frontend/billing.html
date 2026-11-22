@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MediCare | Billing</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .billing-actions button {
+            padding: 8px 12px;
+            margin: 3px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .add-charge {
+            background: #2563eb;
+        }
+
+        .pay-bill {
+            background: #16a34a;
+        }
+
+        .billing-actions button:hover {
+            opacity: 0.85;
+        }
+
+        .billing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .billing-note {
+            margin-top: 15px;
+            color: #666;
+            font-size: 13px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h2>🏥 MediCare</h2>
+
+        <p class="subtitle">Hospital Management</p>
+
+        <a href="dashboard.html">📊 Dashboard</a>
+
+        <a href="patients.html">👨‍⚕️ Patients</a>
+
+        <a href="billing.html" class="active">💳 Billing</a>
+
+        <a href="index.html">🏠 Home</a>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main">
+
+        <header>
+
+            <div>
+                <h2>Billing Management</h2>
+
+                <p>Manage patient bills and payments</p>
+            </div>
+
+        </header>
+
+
+        <!-- SUMMARY CARDS -->
+
+        <div class="cards">
+
+            <div class="card blue">
+
+                <h3>Total Outstanding</h3>
+
+                <h1 id="totalBills">₹0.00</h1>
+
+            </div>
+
+
+            <div class="card green">
+
+                <h3>Pending Amount</h3>
+
+                <h1 id="pendingBills">₹0.00</h1>
+
+            </div>
+
+        </div>
+
+
+        <!-- BILLING TABLE -->
+
+        <div class="panel">
+
+            <div class="billing-header">
+
+                <div>
+                    <h2>Patient Billing Details</h2>
+
+                    <p>View charges and record payments</p>
+                </div>
+
+                <button class="btn" onclick="loadBills()">
+                    🔄 Refresh
+                </button>
+
+            </div>
+
+
+            <div style="overflow-x:auto;">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Patient ID</th>
+
+                            <th>Patient Name</th>
+
+                            <th>Disease</th>
+
+                            <th>Outstanding Amount</th>
+
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="billingTable">
+
+                        <tr>
+                            <td colspan="5">
+                                Loading billing records...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p class="billing-note">
+                Note: Outstanding amount is calculated from the
+                current bill_amount stored in the MySQL patients table.
+            </p>
+
+        </div>
+
+
+        <footer>
+            © 2026 MediCare Hospital Management System
+        </footer>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="billing.js"></script>
+
+</body>
+
+</html>
